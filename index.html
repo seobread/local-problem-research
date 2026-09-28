@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>우리 동네 문제 원인 탐정</title><style>:root{--ink:#17324d;--muted:#5f7182;--line:#dbe5ec;--paper:#fff;--bg:#f3f8fb;--accent:#1877b9;--soft:#e9f5fc}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}main{max-width:920px;margin:auto;padding:36px 18px 64px}.hero{text-align:center;margin-bottom:24px}.hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 10px}.hero p{color:var(--muted);font-size:17px;line-height:1.6}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 30px #24425a12}label{font-weight:800;display:block;margin-bottom:10px}textarea{width:100%;min-height:105px;resize:vertical;border:2px solid var(--line);border-radius:14px;padding:15px;font:inherit;outline:none}textarea:focus{border-color:var(--accent)}.examples{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}.chip{border:1px solid var(--line);background:white;border-radius:999px;padding:8px 11px;cursor:pointer}.primary{width:100%;border:0;border-radius:14px;padding:15px;background:var(--accent);color:white;font-weight:800;font-size:17px;cursor:pointer}#result{margin-top:22px}.hidden{display:none}.summary{background:var(--soft);border-radius:16px;padding:16px;margin-bottom:15px}.grid{display:grid;grid-template-columns:1fr;gap:14px}.card{border:1px solid var(--line);background:#fff;border-radius:17px;padding:18px}.num{font-weight:900;font-size:13px;color:var(--accent)}.card h3{margin:6px 0 8px}.card p{color:var(--ink);line-height:1.7;margin:8px 0}.card ul{padding-left:20px;line-height:1.7;margin:10px 0}.card li{margin:8px 0}.intro{line-height:1.8;margin:0 0 16px}.searchlink{display:inline-block;margin:3px 5px 3px 0;padding:5px 9px;border-radius:9px;background:#e9f5fc;color:#075f98;text-decoration:none}.searchlink:focus,.searchlink:hover{text-decoration:underline}.small{color:var(--muted);font-size:14px}.query{background:#f6f8fa;border-radius:10px;padding:10px;margin-top:10px;font-size:14px}.tip{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.55}@media(max-width:650px){.grid{grid-template-columns:1fr}.panel{padding:18px}}</style></head><body><main><section class="hero"><h1>🔎 우리 동네 문제 원인 탐정</h1><p>우리 모둠이 선택한 지역 문제를 입력해 보세요.<br>문제의 <b>원인</b>을 알아보기 위해 찾아보면 좋은 자료를 추천해 드려요.</p></section><section class="panel"><label for="problem">우리 모둠이 선택한 지역 문제는 무엇인가요?</label><textarea id="problem" placeholder="예: 우리 지역 공원에 쓰레기가 많이 버려져 있어요."></textarea><div class="examples"><button class="chip" data-v="공원과 길거리에 쓰레기 무단투기가 많다">🗑️ 쓰레기</button><button class="chip" data-v="학교 주변에 불법 주정차가 많아 등하굣길이 위험하다">🚗 교통·안전</button><button class="chip" data-v="우리 지역의 오래된 시설이 낡고 이용하기 불편하다">🏚️ 노후 시설</button><button class="chip" data-v="바닷가와 하천에 쓰레기가 많아 환경이 오염되고 있다">🌊 환경 오염</button></div><button class="primary" id="go">어떤 자료를 찾아볼까?</button><div id="result" class="hidden"></div></section></main><script>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>우리 동네 문제 원인 탐정</title><style>:root{--ink:#17324d;--muted:#5f7182;--line:#dbe5ec;--paper:#fff;--bg:#f3f8fb;--accent:#1877b9;--soft:#e9f5fc}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}main{max-width:920px;margin:auto;padding:36px 18px 64px}.hero{text-align:center;margin-bottom:24px}.hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 10px}.hero p{color:var(--muted);font-size:17px;line-height:1.6}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 30px #24425a12}label{font-weight:800;display:block;margin-bottom:10px}textarea{width:100%;min-height:105px;resize:vertical;border:2px solid var(--line);border-radius:14px;padding:15px;font:inherit;outline:none}textarea:focus{border-color:var(--accent)}.examples{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}.chip{border:1px solid var(--line);background:white;border-radius:999px;padding:8px 11px;cursor:pointer}.primary{width:100%;border:0;border-radius:14px;padding:15px;background:var(--accent);color:white;font-weight:800;font-size:17px;cursor:pointer}#result{margin-top:22px}.hidden{display:none}.summary{background:var(--soft);border-radius:16px;padding:16px;margin-bottom:15px}.grid{display:grid;grid-template-columns:1fr;gap:14px}.card{border:1px solid var(--line);background:#fff;border-radius:17px;padding:18px}.num{font-weight:900;font-size:13px;color:var(--accent)}.card h3{margin:6px 0 8px}.card p{color:var(--ink);line-height:1.7;margin:8px 0}.card ul{padding-left:20px;line-height:1.7;margin:10px 0}.card li{margin:8px 0}.intro{line-height:1.8;margin:0 0 16px}.searchterm{display:inline-block;margin:3px 5px 3px 0;padding:5px 9px;border-radius:9px;background:#e9f5fc;color:#075f98;font-weight:700}.small{color:var(--muted);font-size:14px}.query{background:#f6f8fa;border-radius:10px;padding:10px;margin-top:10px;font-size:14px}.tip{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.55}@media(max-width:650px){.grid{grid-template-columns:1fr}.panel{padding:18px}}</style></head><body><main><section class="hero"><h1>🔎 우리 동네 문제 원인 탐정</h1><p>우리 모둠이 선택한 지역 문제를 입력해 보세요.<br>문제의 <b>원인</b>을 알아보기 위해 찾아보면 좋은 자료를 추천해 드려요.</p></section><section class="panel"><label for="problem">우리 모둠이 선택한 지역 문제는 무엇인가요?</label><textarea id="problem" placeholder="예: 우리 지역 공원에 쓰레기가 많이 버려져 있어요."></textarea><div class="examples"><button class="chip" data-v="공원과 길거리에 쓰레기 무단투기가 많다">🗑️ 쓰레기</button><button class="chip" data-v="학교 주변에 불법 주정차가 많아 등하굣길이 위험하다">🚗 교통·안전</button><button class="chip" data-v="우리 지역의 오래된 시설이 낡고 이용하기 불편하다">🏚️ 노후 시설</button><button class="chip" data-v="바닷가와 하천에 쓰레기가 많아 환경이 오염되고 있다">🌊 환경 오염</button></div><button class="primary" id="go">어떤 자료를 찾아볼까?</button><div id="result" class="hidden"></div></section></main><script>
 const problem=document.querySelector('#problem'),result=document.querySelector('#result');
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{problem.value=b.dataset.v;problem.focus()});
 const topics=[
@@ -39,14 +39,59 @@ const fallback=[
 ['공공기관과 주민 의견 비교하기','시청·구청 누리집 또는 시민 의견 게시판',null,'기관의 설명과 주민의 경험이 같거나 다른 점을 표시해 보세요.']
 ];
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function queryLinks(q){return q.split(',').map(v=>v.trim()).filter(Boolean).map(v=>'<a class="searchlink" href="https://search.naver.com/search.naver?query='+encodeURIComponent(v)+'" target="_blank" rel="noopener noreferrer">'+esc(v)+' ↗</a>').join('')}
+function queryText(q){return q.split(",").map(v=>v.trim()).filter(Boolean).map(v=>'<span class="searchterm">'+esc(v)+"</span>").join("")}
+
+const guides={
+'개발 계획':[
+['뉴스 탭에서 기사 제목과 날짜를 먼저 살펴보고, 계획이 바뀌었다는 내용과 주민 의견이 함께 나온 기사를 읽어 보세요.','원래 부지에 계획된 시설은 무엇이었나요? 새 계획은 무엇이며, 바뀌었다고 주장하는 근거는 무엇인가요? 기사에서 확인된 사실과 누군가의 의견을 나눠 적어 보세요.'],
+['IFEZ 누리집의 검색창이나 고시·공고, 보도자료를 살펴보세요. 원하는 문서가 나오지 않으면 검색어에 ‘개발계획 변경’을 더해 보세요.','문서가 발표된 날짜, 해당 부지의 용도, 변경 전후 내용을 찾아 기사와 같은지 비교하세요. 문서를 찾지 못했다면 “확인하지 못함”이라고 적어요.'],
+['시민 의견 게시판의 청원·제안과 이를 다룬 기사를 찾아보세요. 게시판 이름이나 운영 방식은 바뀔 수 있어요.','학교·교통·경관 등 어떤 걱정이 실제 글에 나오는지 확인하세요. 주민의 걱정을 이미 일어난 사실로 쓰지 말고, 기관 자료와 비교해 보세요.'],
+['지도에서 부지 이름을 찾기 어려우면 “송도 국제업무지구 C1 C2 위치”를 함께 검색해 보세요.','주변 도로와 학교, 주거 건물을 표시하고 건물 밀도나 통학 문제가 실제로 발생하는지는 다른 자료로 확인하세요.']
+],
+'쓰레기 문제':[
+['뉴스 검색창에 장소와 문제를 함께 입력하고 최근 기사부터 찾아보세요.','언제부터, 어느 장소에서 반복되는지와 기사 속 주민·상인·구청의 설명이 어떻게 다른지 적어 보세요.'],
+['구청 누리집의 환경·청소 자료나 공공데이터포털에서 배출량·신고 건수를 찾아보세요.','같은 지역의 같은 항목을 두 해 이상 비교하세요. 숫자가 늘었다면 신고가 늘어서인지 실제 발생이 늘어서인지 더 알아보세요.'],
+['지도에서 기사에 나온 장소를 찾고 사진이나 공개된 거리 모습을 살펴보세요.','쓰레기통·수거 장소·상가·공원과의 위치 관계를 표시하세요. 사진만으로 투기 원인을 단정하지 마세요.'],
+['구청 누리집에서 청소 일정, 수거 방식, 단속·민원 자료를 찾아보세요.','수거 횟수나 안내 시설이 부족한지 자료로 확인하고 뉴스에서 나온 주장과 비교해 보세요.']
+],
+'교통·안전 문제':[
+['뉴스에서 학교나 도로 이름을 함께 검색하고 사고와 불편을 다룬 기사를 읽어 보세요.','차가 몰리는 시간, 보행자가 위험하다고 느끼는 이유, 실제 사고 사실을 구분해 적어 보세요.'],
+['도로교통공단 교통사고분석시스템 또는 지자체 자료에서 사고·신고 통계를 살펴보세요.','같은 지역의 여러 해를 비교하고 전체 사고와 어린이 사고가 구분되는지 확인하세요.'],
+['지도와 거리 사진에서 학교 주변의 길을 따라가 보세요.','횡단보도·신호등·인도·주차장 위치를 확인하고 위험하다고 생각한 이유를 표시해 보세요.'],
+['시청·구청 또는 경찰서 누리집에서 교통안전 대책과 민원 자료를 찾아보세요.','시설이 이미 있는지, 설치 예정인지 날짜를 확인하세요. 주민 요구와 담당 기관 설명도 비교해 보세요.']
+],
+'환경 문제':[
+['장소와 오염 종류를 함께 검색해 서로 다른 날의 기사를 읽어 보세요.','오염이 실제로 측정되었는지, 누가 언제 발견했는지, 원인에 대한 추측과 조사 결과를 구분하세요.'],
+['환경부·지자체 환경 자료나 공공데이터포털의 수질·대기질 자료를 찾아보세요.','측정 지점과 날짜가 문제 장소와 맞는지, 같은 수치를 비교하고 있는지 확인하세요.'],
+['지도에 문제 장소와 주변 하천·도로·시설을 표시해 보세요.','가까이 있다는 이유만으로 원인이라고 단정하지 말고, 조사 보고서에 근거가 있는지 찾아보세요.'],
+['시청·구청 또는 환경 관련 기관의 조사·점검 결과를 검색해 보세요.','측정 결과와 기관이 밝힌 원인을 읽고 뉴스 내용과 다른 점을 표시하세요.']
+],
+'시설 문제':[
+['시설 이름이나 동네 이름을 넣어 불편을 다룬 기사를 찾아보세요.','누가 언제 어떤 불편을 겪었는지, 시설의 노후와 이용 부족 중 무엇이 쟁점인지 나눠 적으세요.'],
+['시청·구청 통계에서 시설 현황과 인구 변화를 찾아보세요. 폐교 문제라면 교육청 자료도 확인하세요.','시설 수와 이용자 수가 조사된 연도·지역이 같은지 확인하고, 이용자가 줄었다면 이유를 더 찾아보세요.'],
+['지도에서 해당 시설과 가까운 다른 시설의 위치를 표시해 보세요.','걸어갈 수 있는 거리인지, 큰 도로나 하천 때문에 접근하기 어려운지 살펴보세요.'],
+['관리 기관의 안전 점검, 보수 계획, 예산 또는 활용 계획을 검색해 보세요.','계획만 있는지 실제 공사가 끝났는지 날짜를 확인하고 주민의 요구와 비교하세요.']
+]
+};
+const sampleTerms={
+'쓰레기 문제':['쓰레기 무단투기 원인','무단투기 신고 건수','무단투기 상습지역','쓰레기 수거 일정'],
+'교통·안전 문제':['통학로 불법주정차 문제','어린이 교통사고 통계','학교 주변 횡단보도 위치','통학로 안전 개선 계획'],
+'환경 문제':['환경오염 원인 기사','수질 대기질 측정 결과','오염 지역 지도','환경 조사 보고서'],
+'시설 문제':['노후 시설 주민 불편','공공시설 이용자 수','주변 공공시설 위치','시설 안전 점검 계획']
+};
+function suggestions(t,place,p,i){
+ if(t?.name==='개발 계획') return t.steps[i][2];
+ const key=t?.name,term=sampleTerms[key]?.[i]||['지역 문제 원인 기사','지역 문제 통계 현황','지역 문제 지도 사진','지역 문제 조사 보고서'][i];
+ const exact=p.length<25?p.replace(/[.!?]/g,'').trim():null;
+ return place+' '+term+', '+(exact&&i===0?exact+' 원인':place+' '+term.split(' ').slice(-2).join(' '));
+}
 function placeOf(p){let m=p.match(/(?:인천|송도|소래|부평|연수|남동|미추홀|계양|서구|중구|동구|강화|옹진)(?:국제업무지구|국제도시|구|군|동|역|공원|동네)?/);return m?m[0]:'우리 지역'}
 document.querySelector('#go').onclick=()=>{
 const p=problem.value.trim();if(!p){alert('먼저 우리 모둠의 지역 문제를 입력해 주세요.');problem.focus();return}
 const t=topics.find(x=>x.keys.test(p)), place=placeOf(p),subject=t?.source||p.replace(/[.!?]/g,'').slice(0,65);
 const steps=t?.steps||fallback;
 result.classList.remove('hidden');
-result.innerHTML='<div class="summary"><b>🔎 우리 모둠을 위한 맞춤형 자료 찾는 방법 (4가지)</b><p class="intro">반가워요, 여러분! <b>'+esc(p)+'</b>에 대해 조사하기로 했군요. 이 문제가 왜 생겼는지 알아보려면 여러 자료를 찾아 함께 비교해 보아요. 여러분도 충분히 할 수 있어요!</p><span class="small">아래 검색어는 조사 출발점이에요. 실제 자료가 있는지 열어 보고 확인해 주세요.</span></div><div class="grid">'+steps.map((x,i)=>{let q=x[2]||subject+' 원인, '+subject+' 통계, '+place+' '+(t?.name||'지역 문제')+' 현황';return '<article class="card"><span class="num">방법 '+(i+1)+'</span><h3>'+esc(x[0])+'</h3><ul><li><b>어디서 찾기:</b> '+esc(x[1])+'</li><li><b>무슨 검색어로 치기:</b><br>'+queryLinks(q)+'</li><li><b>무엇을 확인하기:</b> '+esc(x[3])+'</li></ul></article>'}).join('')+'</div><div class="tip"><b>💬 선생님의 한 마디!</b><br>어려운 말은 사전에서 찾아보고, 자료의 날짜와 출처를 적어 두세요. 서로 다른 자료 두 개 이상을 비교한 뒤 우리 모둠의 생각을 정리해 봅시다. 파이팅!</div>';
+result.innerHTML='<div class="summary"><b>🔎 우리 모둠을 위한 맞춤형 자료 찾는 방법 (4가지)</b><p class="intro">반가워요, 여러분! <b>'+esc(p)+'</b>에 대해 조사하기로 했군요. 이 문제가 왜 생겼는지 알아보려면 여러 자료를 찾아 함께 비교해 보아요. 여러분도 충분히 할 수 있어요!</p><span class="small">아래 검색어는 입력 예시예요. 자료를 직접 찾아 날짜와 출처를 확인해 주세요.</span></div><div class="grid">'+steps.map((x,i)=>{let q=suggestions(t,place,p,i), extra=guides[t?.name]?.[i];return '<article class="card"><span class="num">방법 '+(i+1)+'</span><h3>'+esc(x[0])+'</h3><ul><li><b>어디서 찾기:</b> '+esc(x[1])+(extra?' <span class="small">'+esc(extra[0])+'</span>':'')+'</li><li><b>무슨 검색어로 치기:</b><br>'+queryText(q)+'</li><li><b>무엇을 확인하기:</b> '+esc(x[3])+(extra?' <b>모둠 질문:</b> '+esc(extra[1]):' <b>모둠 질문:</b> 자료를 만든 곳과 날짜는 어디에 쓰여 있나요? 기사와 숫자 자료가 같은 이야기를 하나요?')+'</li></ul></article>'}).join('')+'</div><div class="tip"><b>💬 선생님의 한 마디!</b><br>어려운 말은 사전에서 찾아보고, 자료의 날짜와 출처를 적어 두세요. 서로 다른 자료 두 개 이상을 비교한 뒤 우리 모둠의 생각을 정리해 봅시다. 파이팅!</div>';
 result.scrollIntoView({behavior:'smooth',block:'start'});
 };
 </script></body></html>
