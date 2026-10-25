@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>우리 동네 제안 글쓰기 도우미</title><style>
+:root{--green:#00856c;--ink:#234454;--bg:#effbf6;--line:#cbe5da}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;line-height:1.75}header{background:var(--green);color:white;text-align:center;padding:26px 16px}h1{font-size:clamp(25px,4vw,36px);margin:0}header p{margin:6px 0}main{max-width:960px;margin:auto;padding:24px 16px 48px}.panel{background:white;border:1px solid var(--line);padding:24px;border-radius:18px;margin-bottom:20px}h2{font-size:23px;margin:0 0 10px}h3{font-size:18px;margin:0 0 8px}p{margin:8px 0}label{display:block;font-weight:750;margin-bottom:6px}input,textarea{font:inherit;color:inherit;border:1px solid #b9cdd0;border-radius:11px;padding:12px;width:100%;background:white}textarea{min-height:330px;resize:vertical}input:focus,textarea:focus{outline:3px solid #a4e6d1;border-color:var(--green)}.field{margin:16px 0}.small{font-size:14px;color:#58717c}.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{font:inherit;font-weight:750;border:1px solid var(--line);border-radius:10px;padding:11px 16px;cursor:pointer;background:white;color:var(--green)}.primary{background:var(--green);color:white;border-color:var(--green)}button:focus-visible,a:focus-visible{outline:3px solid #d9a72f;outline-offset:3px}.card{border:1px solid var(--line);border-radius:14px;padding:19px;margin:15px 0}.badge{font-size:13px;background:#edf8f1;color:#20684e;border-radius:20px;padding:4px 10px;display:inline-block;margin-bottom:9px}.quote{background:#f3f7fa;border-left:4px solid #9ac7c3;padding:11px 14px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}.guide{background:#fffae9;padding:12px;border-radius:10px}.hidden{display:none}.error{color:#a62828}.status{min-height:25px;color:var(--green)}.checks label{font-weight:400;display:flex;gap:9px;align-items:flex-start;margin:10px 0}.checks input{width:18px;margin-top:7px;flex:none}a{color:var(--green)}footer{text-align:center;font-size:14px}.snapshot{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto;padding:15px;background:#f5f8f7;border-radius:10px}#exporttext{white-space:pre-wrap;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:750}
+@media(max-width:650px){.row{grid-template-columns:1fr}.panel{padding:18px}}
+@media print{body{background:white}header{background:white;color:black}.actions,footer,.small,#entry,#feedbackpanel,#revision{display:none}.panel{border:0}.hidden{display:none}}
+</style></head><body>
+<header><h1>✍️ 우리 동네 제안 글쓰기 도우미</h1><p>내 생각을 설득력 있게 전하고, 피드백을 읽으며 직접 고쳐 써요.</p></header><main>
+<section class="panel"><h2>👋 반가워요, 어린이 작가 여러분!</h2><p>우리 모둠이 마련한 해결 방안을 제안하는 글로 써 보았나요? 글을 읽는 사람이 문제를 이해하고 제안에 공감할 수 있도록 함께 점검해 봅시다.</p><p class="small">이 도구는 글 속 표현과 문단을 바탕으로 준비된 피드백을 보여줘요. 글의 뜻 전체나 맞춤법, 근거의 사실 여부를 판단하는 AI 첨삭은 아니에요. 안내가 내 글과 맞는지 직접 살펴보세요.</p></section>
+<form id="entry" class="panel"><h2>1. 내가 쓴 제안 글 넣기</h2>
+<div class="row"><div><label for="audience">누구에게 제안하나요? <span class="small">(선택)</span></label><input id="audience" maxlength="100" placeholder="예: 구청장님, 학교장님"></div><div><label for="title">글 제목 <span class="small">(선택)</span></label><input id="title" maxlength="150" placeholder="예: 안전한 등굣길을 만들어 주세요"></div></div>
+<div class="field"><label for="essay">내가 쓴 글</label><textarea id="essay" required maxlength="12000" placeholder="처음: 어떤 문제가 있어 제안하는지&#10;&#10;가운데: 무엇을 어떻게 하자는 제안인지, 왜 필요한지&#10;&#10;끝: 어떤 변화가 기대되는지, 정중한 부탁과 마무리"></textarea><p class="small">이름·연락처 등 개인정보는 적지 마세요. <span id="count">0</span>자 / 최대 12,000자</p></div>
+<div class="actions"><button class="primary" type="submit">💬 내 글 피드백 받기</button><button id="example" type="button">연습용 예시 넣기</button></div><p id="error" class="error" role="alert"></p></form>
+<section id="feedbackpanel" class="panel hidden" aria-labelledby="feedbacktitle"><h2 id="feedbacktitle">2. 내 글을 더 설득력 있게</h2><p id="intro"></p><p class="guide">문장이 발견되었다고 내용이 충분하다는 뜻은 아니에요. 표현이 발견되지 않아도 다른 말로 잘 썼을 수 있어요. 아래 의견을 내 글과 비교하며 읽어 보세요.</p><div id="cards"></div></section>
+<section id="revision" class="panel hidden"><h2>3. 피드백을 골라 직접 고쳐 쓰기</h2><details><summary>피드백을 받은 원래 글 보기</summary><div id="original" class="snapshot"></div></details>
+<div class="field"><label for="revised">고쳐 쓴 글</label><textarea id="revised" maxlength="12000" placeholder="피드백을 참고하여 내가 직접 고쳐 써요."></textarea></div><div class="field"><label for="changed">어디를 왜 고쳤나요? <span class="small">(선택)</span></label><textarea id="changed" style="min-height:90px" maxlength="2000" placeholder="예: 제안이 막연해서 설치할 장소와 담당 기관을 덧붙였어요."></textarea></div>
+<div class="checks"><label><input type="checkbox">문제와 제안이 서로 연결되는지 읽어 보았어요.</label><label><input type="checkbox">근거 자료의 출처와 사실을 확인했어요.</label><label><input type="checkbox">글을 소리 내어 읽고 어색한 표현과 맞춤법을 살폈어요.</label></div>
+<div class="actions"><button id="reviewagain" type="button">고쳐 쓴 글 다시 점검</button><button id="finish" class="primary" type="button">📄 완성한 글 정리하기</button></div><p id="revisestatus" class="status" role="status"></p></section>
+<section id="output" class="panel hidden"><h2>📄 나의 제안 글</h2><div id="exporttext"></div><div class="actions"><button id="copy" type="button">내용 복사</button><button id="save" type="button">텍스트로 저장</button><button id="print" type="button">인쇄하기</button></div><p id="status" class="status" role="status"></p></section>
+<footer><p><a href="./index.html">자료 찾기</a> · <a href="./proposal.html">해결 방안 검토하기</a></p><p>로그인 없이 사용할 수 있어요. 입력 내용은 서버에 전송하거나 자동 저장하지 않으니, 끝나면 복사하거나 저장해 주세요.</p></footer></main><script>
+const $=id=>document.getElementById(id);let snapshot=null,exportText='';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function inspect(text){
+ const sentences=text.split(/(?<=[.!?。])\s*|\n+/).map(s=>s.trim()).filter(Boolean);
+ const find=re=>sentences.find(s=>re.test(s));
+ const specs=[
+ ['문제가 잘 드러나나요?',/문제|불편|위험|어려|부족|쓰레기|사고|오염|피해/,
+ '읽는 사람이 어떤 장소에서 누가 어떤 불편을 겪는지 알 수 있는지 확인해 보세요.',
+ '처음 부분에 문제를 겪는 장소와 사람, 불편한 상황을 한두 문장으로 써 보세요.',
+ '문장 틀: “우리 지역의 [장소]에서는 [문제 상황] 때문에 [누가] [불편]을 겪고 있습니다.”'],
+ ['무엇을 어떻게 하자는 제안인가요?',/제안|요청|설치|마련|운영|정비|개선|확대|해 주|해주세요|해주|하자|했으면|하면 좋/,
+ '제안하는 행동을 적었군요. 누가 어디서 무엇을 할지 구체적으로 드러나는지 더 살펴보세요.',
+ '하고 싶은 말이 부탁만으로 끝나지 않도록, 실행할 행동과 장소를 구체적으로 적어 보세요.',
+ '문장 틀: “[담당 기관]에서 [장소]에 [어떤 방법]을 시행해 주실 것을 제안합니다.”'],
+ ['제안하는 이유가 충분한가요?',/왜냐|때문|이유|위해서|위해|필요|따라서|그러므로/,
+ '이유를 설명하는 표현이 있어요. “좋으니까”라는 말보다 문제 해결에 어떻게 도움이 되는지 설명하면 더 설득력 있어요.',
+ '이 제안이 왜 필요한지, 문제를 해결하는 데 어떻게 도움이 되는지 이유를 덧붙여 보세요.',
+ '함께 생각하기: 제안한 방법을 시행하면 어떤 과정으로 불편이 줄어들까요?'],
+ ['근거를 확인할 수 있나요?',/통계|기사|조사|관찰|보고서|자료|출처|\d+\s*(명|건|%|대)/,
+ '자료나 숫자를 언급한 부분이 있어요. 만든 기관·기사 제목·날짜를 확인하고, 제안을 뒷받침하는 자료인지 살펴보세요.',
+ '조사한 기사나 통계, 관찰한 사실 중 제안의 필요성을 뒷받침할 것을 골라 넣어 보세요. 없는 숫자는 만들어 쓰지 않아요.',
+ '문장 틀: “[기관·자료명, 날짜]에 따르면 [확인한 사실]이라고 합니다.”'],
+ ['기대하는 변화가 드러나나요?',/기대|효과|줄어|줄일|줄이|늘어|높아|안전해|깨끗해|도움|해결될|해결할 수/,
+ '기대 효과를 나타내는 표현이 있어요. 누가 어떤 도움을 받는지 구체적인 변화로 설명해 보세요.',
+ '제안을 실천하면 누가 어떤 점에서 좋아지는지 마지막 부분에 덧붙여 보세요.',
+ '문장 틀: “이 방법을 시행하면 [누가] [어떤 변화]를 기대할 수 있습니다.”'],
+ ['읽는 사람을 배려하는 표현인가요?',/님|합니다|습니다|부탁|주세요|주십시오|감사/,
+ '정중한 표현을 사용했어요. 글 전체의 말투가 비슷한지, 다른 의견을 가진 사람도 존중하는지 읽어 보세요.',
+ '제안을 받는 사람에게 맞는 인사와 정중한 부탁을 덧붙이고 글 전체의 말투를 맞춰 보세요.',
+ '표현 예: “검토해 주시면 감사하겠습니다.” “주민들의 의견도 함께 살펴 주시기 바랍니다.”']
+ ];
+ return specs.map(([title,re,yes,no,guide])=>{const sentence=find(re);return {title,sentence,comment:sentence?yes:no,guide}});
+}
+function renderFeedback(text){
+ const items=inspect(text),para=text.split(/\n\s*\n/).filter(s=>s.trim()).length;
+ $('intro').textContent='여러분의 글을 표현과 구성 기준으로 살펴보았어요. 먼저 고칠 부분 두세 가지를 골라 한 단계씩 다듬어 봅시다.';
+ $('cards').innerHTML=items.map((x,i)=>'<article class="card"><span class="badge">'+(x.sentence?'관련 표현을 찾았어요':'직접 확인해 볼 부분')+'</span><h3>'+(i+1)+'. '+esc(x.title)+'</h3>'+(x.sentence?'<div class="quote"><b>내 글에서 찾은 부분</b><br>'+esc(x.sentence)+'</div>':'')+'<p>'+esc(x.comment)+'</p><p class="guide">✏️ '+esc(x.guide)+'</p></article>').join('')+'<article class="card"><h3>7. 문단과 문장도 살펴봐요</h3><p>'+ (para<2?'빈 줄로 나눈 문단이 거의 없어요. 문제 소개 → 제안과 이유 → 기대 효과와 부탁 순서로 나누면 읽기 편해져요.':'문단을 나누어 썼군요. 각 문단에 하나의 중심 내용이 담겼는지 확인하고, 제안과 이유가 자연스럽게 이어지는지 읽어 보세요.')+'</p><p>한 문장에 여러 생각이 담겼다면 나누어 쓰고, “이것”, “그것”이 무엇을 가리키는지도 확인해 보세요.</p></article>';
+ $('feedbackpanel').classList.remove('hidden');
+}
+$('essay').oninput=()=>{$('count').textContent=$('essay').value.length};
+$('entry').onsubmit=e=>{e.preventDefault();const text=$('essay').value.trim();if(!text){$('error').textContent='먼저 내가 쓴 제안 글을 넣어 주세요.';return}
+ if(snapshot&&!confirm('새 피드백을 받으면 아래 고쳐 쓴 글이 새 원문으로 바뀌어요. 계속할까요?'))return;
+ snapshot={text,title:$('title').value.trim(),audience:$('audience').value.trim()};$('error').textContent='';renderFeedback(text);$('original').textContent=text;$('revised').value=text;$('changed').value='';document.querySelectorAll('.checks input').forEach(x=>x.checked=false);$('revision').classList.remove('hidden');$('output').classList.add('hidden');$('revisestatus').textContent='';$('feedbackpanel').scrollIntoView({behavior:'smooth'});};
+$('example').onclick=()=>{if($('essay').value.trim()&&!confirm('작성한 원문을 연습용 예시로 바꿀까요?'))return;$('audience').value='구청장님';$('title').value='안전한 학교 앞길을 만들어 주세요';$('essay').value='구청장님께\n우리 학교 앞은 등교 시간에 차가 많아 길을 건너기 불편합니다.\n\n학교 앞 횡단보도 주변에 주차하지 않도록 안내를 강화하고, 보행자의 시야를 가리는 물건을 점검해 주실 것을 제안합니다. 운전자와 어린이가 서로를 잘 볼 수 있어야 하기 때문입니다.\n\n이 방법을 실천하면 어린이들이 더 안전하게 등교하는 데 도움이 될 것입니다. 검토해 주시면 감사하겠습니다.';$('essay').oninput();};
+$('reviewagain').onclick=()=>{const text=$('revised').value.trim();if(!text){$('revisestatus').textContent='고쳐 쓴 글을 입력해 주세요.';return}renderFeedback(text);$('output').classList.add('hidden');$('revisestatus').textContent='고쳐 쓴 글을 기준으로 피드백을 갱신했어요. 원래 글은 그대로 보관했어요.';$('feedbackpanel').scrollIntoView({behavior:'smooth'});};
+$('finish').onclick=()=>{const text=$('revised').value.trim();if(!text){$('revisestatus').textContent='완성할 글을 입력해 주세요.';return}exportText=(snapshot.title?snapshot.title+'\n\n':'')+(snapshot.audience?'제안 대상: '+snapshot.audience+'\n\n':'')+text+($('changed').value.trim()?'\n\n[고쳐 쓴 과정]\n'+$('changed').value.trim():'');$('exporttext').textContent=exportText;$('output').classList.remove('hidden');$('status').textContent='';$('output').scrollIntoView({behavior:'smooth'});};
+['revised','changed'].forEach(id=>$(id).addEventListener('input',()=>{$('output').classList.add('hidden')}));
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(exportText);$('status').textContent='복사했어요.'}catch{$('status').textContent='자동 복사가 어려워요. 글을 직접 선택해 복사하거나 텍스트로 저장해 주세요.'}};
+$('save').onclick=()=>{const u=URL.createObjectURL(new Blob(['\ufeff'+exportText],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download='우리_동네_제안하는_글.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);$('status').textContent='텍스트 파일로 저장했어요.'};
+$('print').onclick=()=>window.print();
+</script></body></html>
