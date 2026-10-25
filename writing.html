@@ -5,62 +5,68 @@
 @media print{body{background:white}header{background:white;color:black}.actions,footer,.small,#entry,#feedbackpanel,#revision{display:none}.panel{border:0}.hidden{display:none}}
 </style></head><body>
 <header><h1>✍️ 우리 동네 제안 글쓰기 도우미</h1><p>내 생각을 설득력 있게 전하고, 피드백을 읽으며 직접 고쳐 써요.</p></header><main>
-<section class="panel"><h2>👋 반가워요, 어린이 작가 여러분!</h2><p>우리 모둠이 마련한 해결 방안을 제안하는 글로 써 보았나요? 글을 읽는 사람이 문제를 이해하고 제안에 공감할 수 있도록 함께 점검해 봅시다.</p><p class="small">이 도구는 글 속 표현과 문단을 바탕으로 준비된 피드백을 보여줘요. 글의 뜻 전체나 맞춤법, 근거의 사실 여부를 판단하는 AI 첨삭은 아니에요. 안내가 내 글과 맞는지 직접 살펴보세요.</p></section>
+<section class="panel"><h2>👋 반가워요, 어린이 작가 여러분!</h2><p>우리 모둠이 마련한 해결 방안을 제안하는 글로 써 보았나요? 글을 읽는 사람이 문제 상황 → 제안하는 내용 → 제안하는 이유 순서로 썼는지, 내용과 문장이 구체적이고 바른지 함께 점검해 봅시다.</p><p class="small">이 도구는 글 속 표현과 문단을 바탕으로 준비된 피드백을 보여줘요. 글의 뜻 전체나 맞춤법, 근거의 사실 여부를 판단하는 AI 첨삭은 아니에요. 안내가 내 글과 맞는지 직접 살펴보세요.</p></section>
 <form id="entry" class="panel"><h2>1. 내가 쓴 제안 글 넣기</h2>
 <div class="row"><div><label for="audience">누구에게 제안하나요? <span class="small">(선택)</span></label><input id="audience" maxlength="100" placeholder="예: 구청장님, 학교장님"></div><div><label for="title">글 제목 <span class="small">(선택)</span></label><input id="title" maxlength="150" placeholder="예: 안전한 등굣길을 만들어 주세요"></div></div>
-<div class="field"><label for="essay">내가 쓴 글</label><textarea id="essay" required maxlength="12000" placeholder="처음: 어떤 문제가 있어 제안하는지&#10;&#10;가운데: 무엇을 어떻게 하자는 제안인지, 왜 필요한지&#10;&#10;끝: 어떤 변화가 기대되는지, 정중한 부탁과 마무리"></textarea><p class="small">이름·연락처 등 개인정보는 적지 마세요. <span id="count">0</span>자 / 최대 12,000자</p></div>
+<div class="field"><label for="essay">내가 쓴 글</label><textarea id="essay" required maxlength="12000" placeholder="1. 문제 상황: 어디에서 누가 어떤 불편을 겪는지&#10;&#10;2. 제안하는 내용: 누가 어디서 무엇을 어떻게 하면 좋을지&#10;&#10;3. 제안하는 이유: 그 방법이 왜 필요한지, 어떤 도움이 되는지"></textarea><p class="small">이름·연락처 등 개인정보는 적지 마세요. <span id="count">0</span>자 / 최대 12,000자</p></div>
 <div class="actions"><button class="primary" type="submit">💬 내 글 피드백 받기</button><button id="example" type="button">연습용 예시 넣기</button></div><p id="error" class="error" role="alert"></p></form>
 <section id="feedbackpanel" class="panel hidden" aria-labelledby="feedbacktitle"><h2 id="feedbacktitle">2. 내 글을 더 설득력 있게</h2><p id="intro"></p><p class="guide">문장이 발견되었다고 내용이 충분하다는 뜻은 아니에요. 표현이 발견되지 않아도 다른 말로 잘 썼을 수 있어요. 아래 의견을 내 글과 비교하며 읽어 보세요.</p><div id="cards"></div></section>
 <section id="revision" class="panel hidden"><h2>3. 피드백을 골라 직접 고쳐 쓰기</h2><details><summary>피드백을 받은 원래 글 보기</summary><div id="original" class="snapshot"></div></details>
 <div class="field"><label for="revised">고쳐 쓴 글</label><textarea id="revised" maxlength="12000" placeholder="피드백을 참고하여 내가 직접 고쳐 써요."></textarea></div><div class="field"><label for="changed">어디를 왜 고쳤나요? <span class="small">(선택)</span></label><textarea id="changed" style="min-height:90px" maxlength="2000" placeholder="예: 제안이 막연해서 설치할 장소와 담당 기관을 덧붙였어요."></textarea></div>
-<div class="checks"><label><input type="checkbox">문제와 제안이 서로 연결되는지 읽어 보았어요.</label><label><input type="checkbox">근거 자료의 출처와 사실을 확인했어요.</label><label><input type="checkbox">글을 소리 내어 읽고 어색한 표현과 맞춤법을 살폈어요.</label></div>
+<div class="checks"><label><input type="checkbox">문제 상황 → 제안하는 내용 → 제안하는 이유 순서로 썼어요.</label><label><input type="checkbox">장소·대상·실행 방법과 제안하는 이유를 구체적으로 썼어요.</label><label><input type="checkbox">글을 소리 내어 읽고 어색한 표현과 맞춤법을 살폈어요.</label></div>
 <div class="actions"><button id="reviewagain" type="button">고쳐 쓴 글 다시 점검</button><button id="finish" class="primary" type="button">📄 완성한 글 정리하기</button></div><p id="revisestatus" class="status" role="status"></p></section>
 <section id="output" class="panel hidden"><h2>📄 나의 제안 글</h2><div id="exporttext"></div><div class="actions"><button id="copy" type="button">내용 복사</button><button id="save" type="button">텍스트로 저장</button><button id="print" type="button">인쇄하기</button></div><p id="status" class="status" role="status"></p></section>
 <footer><p><a href="./index.html">자료 찾기</a> · <a href="./proposal.html">해결 방안 검토하기</a></p><p>로그인 없이 사용할 수 있어요. 입력 내용은 서버에 전송하거나 자동 저장하지 않으니, 끝나면 복사하거나 저장해 주세요.</p></footer></main><script>
 const $=id=>document.getElementById(id);let snapshot=null,exportText='';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
 function inspect(text){
  const sentences=text.split(/(?<=[.!?。])\s*|\n+/).map(s=>s.trim()).filter(Boolean);
- const find=re=>sentences.find(s=>re.test(s));
- const specs=[
- ['문제가 잘 드러나나요?',/문제|불편|위험|어려|부족|쓰레기|사고|오염|피해/,
- '읽는 사람이 어떤 장소에서 누가 어떤 불편을 겪는지 알 수 있는지 확인해 보세요.',
- '처음 부분에 문제를 겪는 장소와 사람, 불편한 상황을 한두 문장으로 써 보세요.',
- '문장 틀: “우리 지역의 [장소]에서는 [문제 상황] 때문에 [누가] [불편]을 겪고 있습니다.”'],
- ['무엇을 어떻게 하자는 제안인가요?',/제안|요청|설치|마련|운영|정비|개선|확대|해 주|해주세요|해주|하자|했으면|하면 좋/,
- '제안하는 행동을 적었군요. 누가 어디서 무엇을 할지 구체적으로 드러나는지 더 살펴보세요.',
- '하고 싶은 말이 부탁만으로 끝나지 않도록, 실행할 행동과 장소를 구체적으로 적어 보세요.',
- '문장 틀: “[담당 기관]에서 [장소]에 [어떤 방법]을 시행해 주실 것을 제안합니다.”'],
- ['제안하는 이유가 충분한가요?',/왜냐|때문|이유|위해서|위해|필요|따라서|그러므로/,
- '이유를 설명하는 표현이 있어요. “좋으니까”라는 말보다 문제 해결에 어떻게 도움이 되는지 설명하면 더 설득력 있어요.',
- '이 제안이 왜 필요한지, 문제를 해결하는 데 어떻게 도움이 되는지 이유를 덧붙여 보세요.',
- '함께 생각하기: 제안한 방법을 시행하면 어떤 과정으로 불편이 줄어들까요?'],
- ['근거를 확인할 수 있나요?',/통계|기사|조사|관찰|보고서|자료|출처|\d+\s*(명|건|%|대)/,
- '자료나 숫자를 언급한 부분이 있어요. 만든 기관·기사 제목·날짜를 확인하고, 제안을 뒷받침하는 자료인지 살펴보세요.',
- '조사한 기사나 통계, 관찰한 사실 중 제안의 필요성을 뒷받침할 것을 골라 넣어 보세요. 없는 숫자는 만들어 쓰지 않아요.',
- '문장 틀: “[기관·자료명, 날짜]에 따르면 [확인한 사실]이라고 합니다.”'],
- ['기대하는 변화가 드러나나요?',/기대|효과|줄어|줄일|줄이|늘어|높아|안전해|깨끗해|도움|해결될|해결할 수/,
- '기대 효과를 나타내는 표현이 있어요. 누가 어떤 도움을 받는지 구체적인 변화로 설명해 보세요.',
- '제안을 실천하면 누가 어떤 점에서 좋아지는지 마지막 부분에 덧붙여 보세요.',
- '문장 틀: “이 방법을 시행하면 [누가] [어떤 변화]를 기대할 수 있습니다.”'],
- ['읽는 사람을 배려하는 표현인가요?',/님|합니다|습니다|부탁|주세요|주십시오|감사/,
- '정중한 표현을 사용했어요. 글 전체의 말투가 비슷한지, 다른 의견을 가진 사람도 존중하는지 읽어 보세요.',
- '제안을 받는 사람에게 맞는 인사와 정중한 부탁을 덧붙이고 글 전체의 말투를 맞춰 보세요.',
- '표현 예: “검토해 주시면 감사하겠습니다.” “주민들의 의견도 함께 살펴 주시기 바랍니다.”']
- ];
- return specs.map(([title,re,yes,no,guide])=>{const sentence=find(re);return {title,sentence,comment:sentence?yes:no,guide}});
+ const proposalRe=/제안합|제안하|제안드|요청합|요청하|해\s?주|했으면|하면 좋|설치하|마련하|운영하|정비하|개선하|확대하/;
+ const problemRe=/문제|불편|위험|어려|부족|쓰레기|사고|오염|피해|막혀|혼잡/;
+ const reasonRe=/왜냐|때문|이유|필요|도움|줄일|줄어|안전해|깨끗해|기대|효과|위해서|위해/;
+ const pi=sentences.findIndex(s=>proposalRe.test(s));
+ const bi=sentences.findIndex((s,i)=>(pi<0||i<pi)&&problemRe.test(s));
+ const ri=sentences.findIndex((s,i)=>i>pi&&pi>=0&&reasonRe.test(s));
+ const p=pi>=0?sentences[pi]:'', b=bi>=0?sentences[bi]:'', r=ri>=0?sentences[ri]:'';
+ const ordered=bi>=0&&pi>bi&&ri>pi;
+ const cards=[{title:'내용 순서: 문제 상황 → 제안하는 내용 → 제안하는 이유',sentence:[b&&'문제 상황의 단서: '+b,p&&'제안의 단서: '+p,r&&'이유의 단서: '+r].filter(Boolean).join('\n'),
+ comment:ordered?'세 부분으로 볼 수 있는 표현이 순서대로 보여요. 실제로 각 부분의 뜻이 맞는지 확인하고, 중심 내용이 달라지는 곳에서 문단을 나눠 보세요.':'표현만으로 세 부분의 순서를 분명하게 확인하기 어려워요. 문제 상황을 먼저 소개하고, 제안을 말한 다음, 그 제안을 하는 이유가 이어지는지 직접 표시해 보세요. 다른 말로 썼다면 순서를 바꿀 필요는 없어요.',
+ guide:'세 부분에 각각 밑줄을 그어 보세요. 인사말과 끝인사는 앞뒤에 덧붙여도 좋아요.'},
+ {title:'문제 상황을 구체적으로 썼나요?',sentence:b,
+ comment:b?'이 문장에 어느 장소에서 누가 어떤 불편을 겪는지 드러나는지 살펴보세요. “위험합니다”로만 끝났다면 언제 어떤 일이 일어나는지 관찰한 사실을 덧붙여 보세요.':'문제 상황을 설명한 문장을 찾아보세요. 읽는 사람이 그 장면을 떠올릴 수 있도록 장소·대상·불편한 모습을 써 보세요.',
+ guide:'문장 틀: “[장소]에서는 [언제] [누가] [어떤 불편]을 겪고 있습니다.”'},
+ {title:'제안하는 내용을 구체적으로 썼나요?',sentence:p,
+ comment:p?'무엇을 하자는 제안인지 적었군요. “노력해 주세요”, “잘 관리해 주세요”처럼 막연한 말이 있다면 누가 어디에서 어떤 행동을 해야 하는지로 바꿔 보세요.':'제안하는 행동을 분명하게 드러내 보세요. 누가 어디에서 무엇을 어떻게 할지 쓰면 읽는 사람이 실행 방법을 이해하기 쉬워요.',
+ guide:'문장 틀: “[담당 기관]에서 [장소]에 [구체적인 방법]을 시행해 주실 것을 제안합니다.”'},
+ {title:'제안하는 이유를 구체적으로 썼나요?',sentence:r,
+ comment:r?'제안 뒤에 이유로 볼 수 있는 표현이 있어요. “좋기 때문입니다”라는 말보다 그 방법이 누구의 불편을 어떻게 줄이는지 설명하면 설득력이 높아져요.':'제안한 내용 뒤에 그 방법이 왜 필요한지 써 보세요. 문제의 원인을 반복하는 것보다 제안한 방법이 어떤 도움이 되는지 연결해 설명해 보세요.',
+ guide:'문장 틀: “이 방법을 제안하는 이유는 [구체적인 도움이 되는 점] 때문입니다.” 조사한 자료를 사용했다면 출처와 내용을 확인하세요.'}];
+ const long=sentences.find(s=>s.length>100);
+ const because=sentences.find(s=>/왜냐하면/.test(s)&&!/(때문|까닭|이유)/.test(s));
+ const syntaxQuote=because||long||sentences.find(s=>/것|이것|그것/.test(s))||'';
+ cards.push({title:'문장의 짜임이 자연스러운가요?',sentence:syntaxQuote,
+ comment:because?'“왜냐하면”으로 시작한 문장을 다시 읽어 보세요. 이유를 설명하고 “~기 때문입니다”처럼 마무리하면 앞뒤의 관계가 더 분명해질 수 있어요.':long?'여러 생각이 한 문장에 담겨 있을 수 있어요. 행동하는 사람이나 중심 내용이 바뀌는 곳에서 문장을 나누어 읽어 보세요.':'각 문장에서 누가 무엇을 하는지, 무엇이 어떤 상태인지 분명한지 확인해 보세요. 주어와 서술어가 어울리는지도 소리 내어 읽으며 살펴보세요.',
+ guide:'짜임 예: “우리의 제안은 쓰레기통을 설치해야 합니다.” → “우리의 제안은 쓰레기통을 설치하는 것입니다.” “이것·그것”은 가리키는 대상을 알 수 있게 써요.'});
+ const corrections=[[/되요/,'“되요”는 문맥에 따라 “돼요”로 고칠 수 있어요.'],[/할수/,'가능함을 뜻한다면 “할수”는 “할 수”처럼 띄어 써요.'],[/안돼요/,'금지를 뜻한다면 “안돼요”는 “안 돼요”처럼 띄어 써요.'],[/몇일/,'날짜나 날수를 뜻한다면 “몇일”은 “며칠”로 써요.']];
+ const found=corrections.filter(([re])=>re.test(text));
+ const formal=sentences.some(s=>/(합니다|습니다|입니다|겠습니다)[.!?]?$/.test(s)), casual=sentences.find(s=>/(해요|돼요|있어요|없어요|할래|해라|하자)[.!?]?$/.test(s));
+ cards.push({title:'표현과 말투가 바른가요?',sentence:found.length?sentences.find(s=>corrections.some(([re])=>re.test(s))):formal&&casual?casual:'',
+ comment:found.length?found.map(x=>x[1]).join(' '):formal&&casual?'격식 있는 말투와 다른 말투가 섞인 부분이 보여요. 제안을 받는 사람에 맞춰 “~합니다”, “~해 주십시오”처럼 말투를 맞춰 보세요.':'낱말의 뜻과 띄어쓰기, 정중한 말투를 한 번 더 확인해 보세요. 자동 점검에서 지적이 없더라도 모든 표현이 올바르다는 뜻은 아니에요.',
+ guide:'같은 말이 반복되면 줄이고, “무조건”, “당장 해라”처럼 강한 표현은 구체적인 설명과 정중한 부탁으로 바꿔 보세요.'});
+ return cards;
 }
 function renderFeedback(text){
- const items=inspect(text),para=text.split(/\n\s*\n/).filter(s=>s.trim()).length;
- $('intro').textContent='여러분의 글을 표현과 구성 기준으로 살펴보았어요. 먼저 고칠 부분 두세 가지를 골라 한 단계씩 다듬어 봅시다.';
- $('cards').innerHTML=items.map((x,i)=>'<article class="card"><span class="badge">'+(x.sentence?'관련 표현을 찾았어요':'직접 확인해 볼 부분')+'</span><h3>'+(i+1)+'. '+esc(x.title)+'</h3>'+(x.sentence?'<div class="quote"><b>내 글에서 찾은 부분</b><br>'+esc(x.sentence)+'</div>':'')+'<p>'+esc(x.comment)+'</p><p class="guide">✏️ '+esc(x.guide)+'</p></article>').join('')+'<article class="card"><h3>7. 문단과 문장도 살펴봐요</h3><p>'+ (para<2?'빈 줄로 나눈 문단이 거의 없어요. 문제 소개 → 제안과 이유 → 기대 효과와 부탁 순서로 나누면 읽기 편해져요.':'문단을 나누어 썼군요. 각 문단에 하나의 중심 내용이 담겼는지 확인하고, 제안과 이유가 자연스럽게 이어지는지 읽어 보세요.')+'</p><p>한 문장에 여러 생각이 담겼다면 나누어 쓰고, “이것”, “그것”이 무엇을 가리키는지도 확인해 보세요.</p></article>';
+ const items=inspect(text);
+ $('intro').textContent='문제 상황 → 제안하는 내용 → 제안하는 이유의 순서, 내용의 구체성, 문장의 짜임과 표현을 함께 살펴봐요.';
+ $('cards').innerHTML=items.map((x,i)=>'<article class="card"><span class="badge">내 글과 비교하며 점검해요</span><h3>'+(i+1)+'. '+esc(x.title)+'</h3>'+(x.sentence?'<div class="quote"><b>함께 살펴볼 내 글</b><br>'+esc(x.sentence)+'</div>':'')+'<p>'+esc(x.comment)+'</p><p class="guide">✏️ '+esc(x.guide)+'</p></article>').join('');
  $('feedbackpanel').classList.remove('hidden');
 }
 $('essay').oninput=()=>{$('count').textContent=$('essay').value.length};
 $('entry').onsubmit=e=>{e.preventDefault();const text=$('essay').value.trim();if(!text){$('error').textContent='먼저 내가 쓴 제안 글을 넣어 주세요.';return}
  if(snapshot&&!confirm('새 피드백을 받으면 아래 고쳐 쓴 글이 새 원문으로 바뀌어요. 계속할까요?'))return;
  snapshot={text,title:$('title').value.trim(),audience:$('audience').value.trim()};$('error').textContent='';renderFeedback(text);$('original').textContent=text;$('revised').value=text;$('changed').value='';document.querySelectorAll('.checks input').forEach(x=>x.checked=false);$('revision').classList.remove('hidden');$('output').classList.add('hidden');$('revisestatus').textContent='';$('feedbackpanel').scrollIntoView({behavior:'smooth'});};
-$('example').onclick=()=>{if($('essay').value.trim()&&!confirm('작성한 원문을 연습용 예시로 바꿀까요?'))return;$('audience').value='구청장님';$('title').value='안전한 학교 앞길을 만들어 주세요';$('essay').value='구청장님께\n우리 학교 앞은 등교 시간에 차가 많아 길을 건너기 불편합니다.\n\n학교 앞 횡단보도 주변에 주차하지 않도록 안내를 강화하고, 보행자의 시야를 가리는 물건을 점검해 주실 것을 제안합니다. 운전자와 어린이가 서로를 잘 볼 수 있어야 하기 때문입니다.\n\n이 방법을 실천하면 어린이들이 더 안전하게 등교하는 데 도움이 될 것입니다. 검토해 주시면 감사하겠습니다.';$('essay').oninput();};
+$('example').onclick=()=>{if($('essay').value.trim()&&!confirm('작성한 원문을 연습용 예시로 바꿀까요?'))return;$('audience').value='구청장님';$('title').value='안전한 학교 앞길을 만들어 주세요';$('essay').value='구청장님께\n우리 학교 앞은 등교 시간에 차가 많아 길을 건너기 불편합니다.\n\n구청에서 학교 앞 횡단보도 주변에 주차하지 않도록 안내를 강화하고, 보행자의 시야를 가리는 물건을 점검해 주실 것을 제안합니다.\n\n이 방법을 제안하는 이유는 운전자와 어린이가 서로를 잘 볼 수 있어야 하기 때문입니다. 길을 건너기 전에 서로를 발견하면 사고 위험을 줄이는 데 도움이 될 것입니다. 검토해 주시면 감사하겠습니다.';$('essay').oninput();};
 $('reviewagain').onclick=()=>{const text=$('revised').value.trim();if(!text){$('revisestatus').textContent='고쳐 쓴 글을 입력해 주세요.';return}renderFeedback(text);$('output').classList.add('hidden');$('revisestatus').textContent='고쳐 쓴 글을 기준으로 피드백을 갱신했어요. 원래 글은 그대로 보관했어요.';$('feedbackpanel').scrollIntoView({behavior:'smooth'});};
 $('finish').onclick=()=>{const text=$('revised').value.trim();if(!text){$('revisestatus').textContent='완성할 글을 입력해 주세요.';return}exportText=(snapshot.title?snapshot.title+'\n\n':'')+(snapshot.audience?'제안 대상: '+snapshot.audience+'\n\n':'')+text+($('changed').value.trim()?'\n\n[고쳐 쓴 과정]\n'+$('changed').value.trim():'');$('exporttext').textContent=exportText;$('output').classList.remove('hidden');$('status').textContent='';$('output').scrollIntoView({behavior:'smooth'});};
 ['revised','changed'].forEach(id=>$(id).addEventListener('input',()=>{$('output').classList.add('hidden')}));
